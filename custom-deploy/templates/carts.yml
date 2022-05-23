@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: sock-shop-scraper-carts
+  labels:
+    release: prometheus
+spec:
+  namespaceSelector:
+    matchNames:
+    - sock-shop
+  selector:
+    matchLabels:
+      name: carts
+  endpoints:
+  - path: /metrics
+  - interval: 30s

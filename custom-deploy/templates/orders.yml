@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: sock-shop-scraper-orders
+  labels:
+    release: prometheus
+spec:
+  namespaceSelector:
+    matchNames:
+    - sock-shop
+  selector:
+    matchLabels:
+      name: orders
+  endpoints:
+  - path: /metrics
+  - interval: 30s
